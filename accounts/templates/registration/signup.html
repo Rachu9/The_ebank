@@ -1,0 +1,63 @@
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>Sign Up</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+             line-height: 1.6;
+             background-color: #f4f4f4;
+             color: #333;
+             display: flex;
+             flex-direction: column;
+             min-height: 100vh;
+             padding: 20px;
+         }
+ 
+         main {
+             flex: 1;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+         }
+ 
+         h1 {
+             margin-bottom: 20px;
+             color: #142130;
+             font-size: 2.5em;
+             text-align: center;
+         }
+ 
+         form {
+             background: #fff;
+             padding: 30px;
+             border-radius: 8px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+             max-width: 600px;
+             width: 100%;
+         }
+ 
+         .btn-primary {
+             background: #142130;
+             border: none;
+         }
+ 
+         .btn-primary:hover {
+             background: #0f1d2d;
+         }
+     </style>
+ </head>
+ <body>
+     <main>
+         <h1>Sign Up</h1>
+         <form method="post" action="{% url 'signup' %}">
+             {% csrf_token %}
+             {{ form.as_p }}
+             <button type="submit" class="btn btn-primary">Sign Up</button>
+         </form>
+     </main>
+ </body>
+ </html>
+ 

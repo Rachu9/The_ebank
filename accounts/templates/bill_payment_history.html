@@ -1,0 +1,84 @@
+
+
+{% block content %}
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #142130;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        table {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            color: #323232;
+        }
+
+        .home-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #142130;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+
+    <main>
+        <h2>Bill Payment History</h2>
+        {% if bill_payments %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Bill Type</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for payment in bill_payments %}
+                        <tr>
+                            <td>{{ payment.timestamp }}</td>
+                            <td>{{ payment.bill_type }}</td>
+                            <td>{{ payment.amount }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No bill payments found.</p>
+        {% endif %}
+        <a href="{% url 'home' %}" class="home-button">Home</a>
+    </main>
+{% endblock %}

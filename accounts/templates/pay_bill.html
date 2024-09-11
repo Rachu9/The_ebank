@@ -1,0 +1,180 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Pay Bill</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        main {
+            flex: 1; /* Allows the main content to expand and push footer down */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #142130;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px; /* Increased padding for larger form */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px; /* Increased max-width for larger form */
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: #142130;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #0d1b2a;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background: #142130;
+            color: #fff;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .alert {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Pay Bill</h1>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Pay Bill</button>
+        </form>
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 eBank</p>
+    </footer>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pay Bill</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #142130;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: #142130;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #0f1d2d;
+        }
+        .home-button {
+    position: absolute; /* Position the button absolutely within the body */
+    top: 20px; /* Distance from the top */
+    left: 20px; /* Distance from the left */
+    padding: 10px 20px;
+    background-color: #142130;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+    .home-button:hover {
+        background-color: #0e1b2a;
+    }
+    </style>
+</head>
+<body>
+    <main>
+        <a href="{% url 'home' %}" class="home-button">Home</a>
+        <h1>Transaction History</h1>
+        <h1>Pay Bill</h1>
+        <form method="POST" action="{% url 'pay_bill' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Pay Bill</button>
+        </form>
+        {% if messages %}
+            <div class="alert alert-info mt-3">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </main>
+</body>
+</html>
